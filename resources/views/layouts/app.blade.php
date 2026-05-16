@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Expanse Tracker')</title>
+    <title>@yield('title', 'Expense Tracker')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -16,9 +16,10 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-        <a class="navbar-brand fw-bold" href="/">Expanse Tracker</a>
+        <a class="navbar-brand fw-bold" href="/">Expense Tracker</a>
         <div class="navbar-nav ms-auto d-flex flex-row gap-3 align-items-center">
-            <a class="nav-link text-white" href="/expanse">Expanse</a>
+            <a class="nav-link text-white" href="/people">People</a>
+            <a class="nav-link text-white" href="/expense">Expense</a>
 
             @auth
                 <form method="POST" action="/logout" class="m-0">
@@ -53,7 +54,7 @@
     </div>
 
     <footer class="text-center py-4 mt-5 border-top text-muted">
-        <small>Expanse Tracker &copy; {{ date('Y') }} — Built with Laravel ❤️</small>
+        <small>Expense Tracker &copy; {{ date('Y') }} — Built with Laravel ❤️</small>
     </footer>
 </body>
 </html>

@@ -8,7 +8,7 @@ class People extends Model
 {
     protected $fillable = ['name', 'slug'];
 
-    public function expanse(){
-        return $this->hasMany(Expanse::class);
+    public function expense(){
+        return $this->hasMany(Expense::class);
     }
 }
