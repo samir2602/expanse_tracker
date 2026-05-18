@@ -20,7 +20,8 @@
                 <div class="card product-card h-100 shadow-sm border-0">                
                     <div class="card-body d-flex flex-column">
                         <span class="badge bg-secondary mb-2">{{ Date('M Y') }} - Expense </span>
-                        <h6 class="card-title fw-bold">By {{ $ut->people->name }} - {{ $ut->total_amount }} Rs.</h6>                    
+                        <h6 class="card-title fw-bold">By {{ $ut->people->name }} - {{ $ut->total_amount }} Rs.</h6>
+                        <a href="{{ route('people.show', $ut->people_id)}}" class="btn btn-sm btn-outline-secondary">Show</a>                        
                     </div>
                 </div>
             </div>  

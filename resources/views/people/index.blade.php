@@ -14,25 +14,37 @@
                 <p class="text-muted mb-0">{{ $people->total() }} People found &nbsp;&nbsp;&nbsp; <a href="{{ route('people.create') }}" class="btn btn-primary mb-2">Add People</a></p>
             </div>
 
-            {{-- Order Items --}}
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-white fw-bold">Order Items</div>
+            <div class="card shadow-sm border-0">
                 <div class="card-body">
-                    @foreach($people as $peo)
-                        <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
-                            <div>
-                                <h6 class="fw-bold mb-0">{{ $peo->name }}</h6>
-                                <small class="text-muted">
-                                    <a href="{{ route('people.edit', $peo->id)}}">Edit</a>
-                                    <form action="{{ route('people.delete', $peo->id)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this people?')">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit">Delete</button>
-                                    </form>
-                                </small>
-                            </div>                            
-                        </div>
-                    @endforeach
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($people as $peo)
+                                <tr>
+                                    <td>{{ $peo->name }}</td>
+                                    <td>
+                                        <small class="text-muted">                                            
+                                            <a href="{{ route('people.edit', $peo->id)}}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            <form method="POST" action="{{ route('people.delete', $peo->id)}}" class="d-inline" onsubmit="return confirm('Delete this entry?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                            </form>
+                                        </small>    
+                                    </td>                                    
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="7" class="text-center text-muted">No products found</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

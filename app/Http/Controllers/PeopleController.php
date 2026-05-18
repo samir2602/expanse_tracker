@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\People;
+use App\Models\Expense;
 use Illuminate\Support\Str;
-
+use Carbon\Carbon;
 
 class PeopleController extends Controller
 {
@@ -17,6 +18,13 @@ class PeopleController extends Controller
 
     public function create(Request $request){
         return view('people.create');
+    }
+
+    public function show(Request $request, People $people){
+        $date = $request->filled('month') ? Carbon::createFromFormat('Y-m', $request->month) : Carbon::now();
+        $expense = Expense::whereMonth('expense_date', $date->month)->whereYear('expense_date', $date->year)->where('people_id', $people->id)->get();
+        $totalAmount = $expense->sum('amount');
+        return view('people.show', ['people' => $people, 'expense' => $expense, 'totalAmount' => $totalAmount]);
     }
 
     public function store(Request $request){

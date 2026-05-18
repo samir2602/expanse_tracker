@@ -13,25 +13,32 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <a href="{{ route('expense.create') }}" class="btn btn-primary mb-2">Add Expense</a>
             </div>
-            {{-- Order Items --}}
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-white fw-bold">Expense Items</div>
+
+            <div class="card shadow-sm border-0">
                 <div class="card-body">
-                    @foreach($expense as $exp)
-                        <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
-                            <div>
-                                <h6 class="fw-bold mb-0">{{ $exp->people->name .' || '. $exp->reason .' || '. $exp->amount}} Rs.</h6>
-                                <small class="text-muted">
-                                    <a href="{{ route('expense.edit', $exp->id)}}">Edit</a>
-                                    <form action="{{ route('expense.delete', $exp->id)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this expense?')">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit">Delete</button>
-                                    </form>
-                                </small>
-                            </div>                            
-                        </div>
-                    @endforeach
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           @foreach($expense as $exp)
+                                <tr>
+                                    <td>{{ $exp->people->name .' || '. $exp->reason .' || '. $exp->amount}} Rs.</td>
+                                    <td>                                        
+                                        <a href="{{ route('expense.edit', $exp->id)}}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                        <form method="POST" action="{{ route('expense.delete', $exp->id)}}" class="d-inline" onsubmit="return confirm('Delete this entry?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                        </form>
+                                    </td>                                    
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
