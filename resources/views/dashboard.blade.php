@@ -14,6 +14,12 @@
             </div>
         </div>        
     </div>
+    <div class="mb-3">
+        <label class="form-label fw-semibold">Expense Month</label>                
+        <form action="/" method="GET">
+            <input type="month" class="form-control" id="month" name="month" value="{{ (isset($_GET['month'])) ? $_GET['month'] : date('Y-m') }}" onchange="this.form.submit()">                        
+        </form>
+    </div>
     <div class="row">
         @foreach ($userby_total as $ut)
             <div class="col-md-4 mb-4">
