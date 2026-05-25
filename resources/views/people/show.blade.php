@@ -32,6 +32,7 @@
                             <thead>
                                 <tr>
                                     <th>Reason</th>
+                                    <th>Date</th>
                                     <th>Amount</th>
                                     <th>Actions</th>
                                 </tr>
@@ -40,6 +41,7 @@
                             @foreach($expense as $exp)
                                 <tr>
                                     <td>{{ $exp->reason }}</td>
+                                    <td>{{ $exp->expense_date.' || '.\Carbon\Carbon::parse($exp->expense_date)->format('D') }}</td>
                                     <td>{{ $exp->amount }} Rs.</td>
                                     <td>                                        
                                         
@@ -54,6 +56,7 @@
                             @endforeach
                             <tr>
                                 <th>Total</th>
+                                <th></th>
                                 <th>{{ $totalAmount }} Rs.</th>
                             </tr>
                             </tbody>
