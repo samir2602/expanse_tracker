@@ -26,7 +26,7 @@
                         <tbody>
                            @foreach($expense as $exp)
                                 <tr>
-                                    <td>{{ $exp->people->name .' || '. $exp->reason .' || '. $exp->amount}} Rs.</td>
+                                    <td>{{ $exp->expense_date .' || '. $exp->people->name .' || '. $exp->reason .' || '. $exp->amount}} Rs.</td>
                                     <td>                                        
                                         <a href="{{ route('expense.edit', $exp->id)}}" class="btn btn-sm btn-outline-secondary">Edit</a>
                                         <form method="POST" action="{{ route('expense.delete', $exp->id)}}" class="d-inline" onsubmit="return confirm('Delete this entry?')">
