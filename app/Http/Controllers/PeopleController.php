@@ -22,7 +22,7 @@ class PeopleController extends Controller
 
     public function show(Request $request, People $people){
         $date = $request->filled('month') ? Carbon::createFromFormat('Y-m', $request->month) : Carbon::now();
-        $expense = Expense::whereMonth('expense_date', $date->month)->whereYear('expense_date', $date->year)->where('people_id', $people->id)->get();
+        $expense = Expense::whereMonth('expense_date', $date->month)->whereYear('expense_date', $date->year)->where('people_id', $people->id)->orderBy('expense_date', 'desc')->get();
         $totalAmount = $expense->sum('amount');
         return view('people.show', ['people' => $people, 'expense' => $expense, 'totalAmount' => $totalAmount]);
     }

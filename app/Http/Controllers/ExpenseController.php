@@ -10,7 +10,7 @@ class ExpenseController extends Controller
 {
     public function index()
     {
-        $expense = Expense::Paginate(10);
+        $expense = Expense::orderBy('expense_date', 'desc')->Paginate(100);
         return view('expense.index', ['expense' => $expense]);
     }
 
