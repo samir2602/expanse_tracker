@@ -18,6 +18,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
         <a class="navbar-brand fw-bold" href="/">Expense Tracker</a>
         <div class="navbar-nav ms-auto d-flex flex-row gap-3 align-items-center">
+            <a class="nav-link text-white" href="/">Dashboard</a>
             <a class="nav-link text-white" href="/people">People</a>
             <a class="nav-link text-white" href="/expense">Expense</a>
 

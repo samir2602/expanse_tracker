@@ -30,6 +30,7 @@
                                     <td>
                                         <small class="text-muted">                                            
                                             <a href="{{ route('people.edit', $peo->id)}}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            <a href="{{ route('people.show', $peo->id)}}" class="btn btn-sm btn-outline-secondary">View</a>
                                             <form method="POST" action="{{ route('people.delete', $peo->id)}}" class="d-inline" onsubmit="return confirm('Delete this entry?')">
                                                 @csrf
                                                 @method('DELETE')

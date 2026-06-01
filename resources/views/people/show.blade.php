@@ -3,28 +3,24 @@
 @section('title', 'Expense - Expense Tracker')
 
 @section('content')
-    @if(count($expense) == 0)    
-        {{-- Hero --}}
-        <div class="p-4 mb-4 bg-dark text-white rounded-3 text-center">
-            <h1 class="fw-bold">No Record Found</h1>
-        </div>    
-    @else
-        {{-- Hero --}}
-        <div class="p-4 mb-4 bg-dark text-white rounded-3 text-center">
-            <h1 class="fw-bold">Expense of {{ $expense[0]->people->name }}</h1>        
-        </div>
-        
+    {{-- Hero --}}
+    <div class="p-4 mb-4 bg-dark text-white rounded-3 text-center">
+        <h1 class="fw-bold">Expense of {{ $people->name }}</h1>        
+    </div>
+    <div class="mb-3">
+        <label class="form-label fw-semibold">Expense Month</label>                
+        <form action="{{ route('people.show', $people->id)}} " method="GET">
+            <input type="month" class="form-control" id="month" name="month" value="{{ (isset($_GET['month'])) ? $_GET['month'] : date('Y-m') }}" onchange="this.form.submit()">                        
+        </form>
+    </div>
+    @if(count($expense) == 0)            
+        <h1 class="text-center fw-bold">No Record Found</h1>
+    @else        
         <div class="row">                
             <div class="col-md-12">
                 <div class="mb-3">
                     <a href="/" class="btn btn-sm btn-outline-secondary">Back</a>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label fw-semibold">Expense Month</label>                
-                    <form action="{{ route('people.show', $expense[0]->people_id)}} " method="GET">
-                        <input type="month" class="form-control" id="month" name="month" value="{{ (isset($_GET['month'])) ? $_GET['month'] : date('Y-m') }}" onchange="this.form.submit()">                        
-                    </form>
-                </div>
+                </div>                
 
                 <div class="card shadow-sm border-0">
                     <div class="card-body">
